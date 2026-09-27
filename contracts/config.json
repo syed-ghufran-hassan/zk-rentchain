@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "deployAliases": {
+    "devnet": {
+      "networkId": "testnet",
+      "url": "https://devnet-plain-1.gcp.o1test.net/graphql",
+      "keyPath": "keys/devnet.json",
+      "feepayerKeyPath": "/home/zee-tech/.cache/zkapp-cli/keys/testnet-fees.json",
+      "feepayerAlias": "testnet-fees",
+      "fee": "0.1",
+      "smartContract": "RentalHistory"
+    }
+  }
+}

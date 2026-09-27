@@ -1,0 +1,83 @@
+ 
+# ===========================
+# Node / npm
+# ===========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+
+# ===========================
+# o1js / zkApp build artifacts
+# ===========================
+build/
+dist/
+cache/
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+
+# o1js circuit cache
+.cache/
+keys/
+*.vk
+*.pk
+
+# ===========================
+# Nuxt / Vue
+# ===========================
+.nuxt/
+.output/
+.nitro/
+.cache/
+dist/
+.vuepress/dist/
+
+# ===========================
+# Environment & secrets
+# ===========================
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+
+# Private keys — CRITICAL
+*.key
+keys.json
+secrets/
+
+# ===========================
+# Logs
+# ===========================
+logs/
+*.log
+
+# ===========================
+# OS / Editor
+# ===========================
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+
+# ===========================
+# Test / coverage
+# ===========================
+coverage/
+.nyc_output/
+junit.xml
+
+# ===========================
+# Misc
+# ===========================
+.tmp/
+.temp/
+*.bak
+*.orig
+ 
