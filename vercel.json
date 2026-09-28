@@ -2,7 +2,7 @@
 {
   "buildCommand": "npm run generate --prefix ui",
   "installCommand": "npm ci --prefix ui",
-  "outputDirectory": "ui/.output/public",
+  "outputDirectory": ".vercel/output/static",
   "headers": [
     {
       "source": "/(.*)",
