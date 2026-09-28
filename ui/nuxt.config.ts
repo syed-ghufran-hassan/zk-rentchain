@@ -13,7 +13,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: false,
 
-  // NOTE: Do NOT set nitro.preset — let Vercel's Nuxt detection handle it
+  // NOTE: No nitro.preset — we want plain static output to .output/public
 
   app: {
     head: {
@@ -26,7 +26,6 @@ export default defineNuxtConfig({
     },
   },
 
-  // Alias now points inside ui/ (contracts-src is created by prebuild)
   alias: {
     '@contracts': resolve(currentDir, './contracts-src'),
   },

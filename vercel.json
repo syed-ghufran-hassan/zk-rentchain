@@ -1,6 +1,8 @@
+ 
 {
   "buildCommand": "cd ui && rm -rf contracts-src && cp -r ../contracts/src contracts-src && npm run generate",
   "installCommand": "npm install --prefix ui",
+  "outputDirectory": "ui/.output/public",
   "headers": [
     {
       "source": "/(.*)",
@@ -11,3 +13,4 @@
     }
   ]
 }
+ 
