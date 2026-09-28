@@ -1,8 +1,6 @@
- 
 {
   "buildCommand": "npm run generate --prefix ui",
   "installCommand": "npm ci --prefix ui",
-  "outputDirectory": ".vercel/output/static",
   "headers": [
     {
       "source": "/(.*)",
@@ -13,4 +11,3 @@
     }
   ]
 }
- 

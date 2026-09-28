@@ -1,5 +1,3 @@
- 
-// https://nuxt.com/docs/api/configuration/nuxt-config
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
@@ -10,11 +8,14 @@ export default defineNuxtConfig({
     build: { target: 'esnext' },
   },
   css: ['~/assets/styles/globals.css'],
-
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-
   ssr: false,
+
+  // Force the Vercel preset — output goes to .vercel/output/
+  nitro: {
+    preset: 'vercel',
+  },
 
   app: {
     head: {
@@ -27,12 +28,9 @@ export default defineNuxtConfig({
     },
   },
 
-  // Alias the contracts folder so the UI can import zkApp classes
   alias: {
     '@contracts': resolve(currentDir, '../contracts/src'),
   },
-
-  // Note: COOP/COEP headers configured in vercel.json
 
   runtimeConfig: {
     public: {
@@ -44,4 +42,3 @@ export default defineNuxtConfig({
     },
   },
 })
- 
