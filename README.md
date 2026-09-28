@@ -1,5 +1,13 @@
  
+> 🌐 **Live Demo:** [zk-rentchain-fqpf.vercel.app](https://zk-rentchain-fqpf.vercel.app/)
+
+
 # RentChain on Mina Protocol
+
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Vercel-black?logo=vercel)](https://zk-rentchain-fqpf.vercel.app/)
+[![Mina Devnet](https://img.shields.io/badge/Mina-Devnet%20Live-blue)](https://minascan.io/devnet)
+[![Built with o1js](https://img.shields.io/badge/Built%20with-o1js-orange)](https://docs.o1labs.org/o1js)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 A **privacy-preserving rental agreement protocol** built on Mina Protocol using `o1js`. RentChain brings real-world asset (RWA) tokenization to Mina with native zero-knowledge proofs, enabling private rentals without revealing sensitive tenant data.
  
@@ -12,13 +20,13 @@ A **privacy-preserving rental agreement protocol** built on Mina Protocol using 
 - **Native privacy** — prove eligibility without revealing income or rental history
 - **Client-side proving** — sensitive data never leaves the user's device
 - **Recursive zk-SNARKs** — efficient verification of complex rental histories
-- **STOPE alignment** — Mina Foundation + Mirae Asset are actively building RWA privacy infrastructure on Mina[reference:1]
+- **STOPE alignment** — Mina Foundation + Mirae Asset are actively building RWA privacy infrastructure on Mina
 
 ---
 
 ## 🏗️ Architecture
 
-The system consists of five core zkApps:
+The system consists of five core zkApps (four currently deployed on Devnet, `RentStreamToken` planned):
 
 | zkApp | Purpose |
 |-------|---------|
@@ -44,6 +52,30 @@ RentChain on Mina enables **selective disclosure** — tenants prove eligibility
 ---
 
 ## 📁 Repository Layout
+
+zk-rentchain/
+├── contracts/ # o1js smart contracts
+│ ├── src/
+│ │ ├── PropertyNFT.ts # ERC-721 equivalent (MerkleMap-based)
+│ │ ├── RentalAgreement.ts # Full rental lifecycle
+│ │ ├── RentalHistory.ts # Private rental records
+│ │ ├── RentalOracle.ts # Inspection oracle
+│ │ ├── RentalAgreement.test.ts
+│ │ └── deploy-all.ts # Deploys all 4 zkApps to Devnet
+│ └── deployed.json # Address manifest
+├── ui/ # Nuxt 3 frontend
+│ ├── app/
+│ │ ├── app.vue # Nav + layout
+│ │ ├── composables/
+│ │ │ ├── useMina.ts # Wallet + contract loading
+│ │ │ └── usePropertyNFT.ts # MerkleMap sync + registerProperty
+│ │ └── pages/
+│ │ ├── index.vue # Dashboard
+│ │ ├── property.vue # Register a property
+│ │ └── agreement.vue # Sign + interact with agreement
+│ ├── nuxt.config.ts
+│ └── vercel.json
+└── README.md
 
 
 ---
@@ -99,3 +131,100 @@ npm run testw
 
 **Network:** Mina Devnet (`https://devnet-plain-1.gcp.o1test.net/graphql`)
 **Deploy date:** September 2026
+
+## 🚀 Live Deployment
+
+| Environment | URL |
+|-------------|-----|
+| **Frontend** | [https://zk-rentchain-fqpf.vercel.app](https://zk-rentchain-fqpf.vercel.app/) |
+| **Host** | Vercel (auto-deploys on `main` push) |
+| **Network** | Mina Devnet |
+| **GraphQL** | `https://devnet-plain-1.gcp.o1test.net/graphql` |
+
+### What works on the live site
+
+- ✅ Dashboard with all 4 deployed zkApps
+- ✅ Auro Wallet connection (Devnet)
+- ✅ Read-only view of the RentalAgreement state
+- ✅ MinaScan links to verify on-chain state
+- ✅ COOP/COEP headers enabled → in-browser ZK proof generation works
+
+### Local development
+
+For a full feature-complete experience (including property registration and
+transaction signing), clone the repo and run locally:
+
+```bash
+git clone https://github.com/syed-ghufran-hassan/zk-rentchain.git
+cd zk-rentchain/ui
+npm install
+npm run dev
+# → http://localhost:3000
+```
+
+---
+
+## 🎯 Roadmap
+
+### ✅ Milestone 0 — Foundation (Complete)
+
+- [x] Four zkApps implemented in o1js (PropertyNFT, RentalAgreement, RentalHistory, RentalOracle)
+- [x] Unit tests passing
+- [x] Deployed to Mina Devnet with unique addresses per contract
+- [x] Nuxt 3 UI with wallet connection and read-only state view
+- [x] Live demo on Vercel
+
+### ⏳ Milestone 1 — In-Browser Proofs (In Progress)
+
+- [ ] MerkleMap witness sync from on-chain root
+- [ ] Full in-browser proof generation for all core methods
+- [ ] Auro Wallet transaction handoff
+- [ ] Progress UI (30–60s proof feedback)
+
+### 📅 Milestone 2 — RentStreamToken + Private Circuits
+
+- [ ] `RentStreamToken` zkApp (Mina fungible token)
+- [ ] Three private eligibility circuits:
+  - Good rental history (≥N successful rentals)
+  - Income sufficiency (income ≥ 3× rent)
+  - No unresolved disputes
+- [ ] Integration tests with >90% coverage
+
+### 📅 Milestone 3 — Audit & User Testing
+
+- [ ] Third-party security audit
+- [ ] Onboard 10 property owners, 20 tenants
+- [ ] 10 full agreements executed on Devnet
+
+### 📅 Milestone 4 — Mainnet Launch
+
+- [ ] All zkApps deployed to Mina Mainnet
+- [ ] First real property tokenized with legal wrapper
+- [ ] $10k rent volume processed
+
+---
+ 
+
+| Mina Priority | How RentChain Delivers |
+|---------------|----------------------|
+| **Feeding the Proof** | Onboarding real-world rental data (leases, inspection reports) to Mina |
+| **Verifiable Compute** | Rental agreement logic runs off-chain with on-chain proofs |
+| **RWA Focus** | Direct application of Mina's STOPE framework for tokenized real estate |
+| **Privacy** | Tenants prove eligibility without revealing income, identity, or history |
+
+---
+
+## 🙏 Acknowledgements
+
+- [Mina Protocol](https://minaprotocol.com) — zkApp platform
+- [o1js](https://docs.o1labs.org/o1js) — TypeScript zkApp SDK
+- [zkApp CLI](https://www.npmjs.com/package/zkapp-cli) — Project scaffolding
+- [Auro Wallet](https://www.aurowallet.com/) — Browser wallet
+- [Nuxt](https://nuxt.com) — Vue framework
+- [Vercel](https://vercel.com) — Hosting
+
+---
+
+## 📄 License
+
+MIT
