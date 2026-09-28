@@ -1,4 +1,8 @@
+ 
 {
+  "buildCommand": "npm run generate --prefix ui",
+  "installCommand": "npm install --prefix ui",
+  "outputDirectory": "ui/.output/public",
   "headers": [
     {
       "source": "/(.*)",
@@ -9,4 +13,5 @@
     }
   ]
 }
+ 
  
