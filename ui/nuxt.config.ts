@@ -1,3 +1,4 @@
+ 
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
@@ -12,10 +13,7 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: false,
 
-  // Force the Vercel preset — output goes to .vercel/output/
-  nitro: {
-    preset: 'vercel',
-  },
+  // NOTE: Do NOT set nitro.preset — let Vercel's Nuxt detection handle it
 
   app: {
     head: {
@@ -28,8 +26,9 @@ export default defineNuxtConfig({
     },
   },
 
+  // Alias now points inside ui/ (contracts-src is created by prebuild)
   alias: {
-    '@contracts': resolve(currentDir, '../contracts/src'),
+    '@contracts': resolve(currentDir, './contracts-src'),
   },
 
   runtimeConfig: {
@@ -42,3 +41,4 @@ export default defineNuxtConfig({
     },
   },
 })
+ 

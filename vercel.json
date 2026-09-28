@@ -1,6 +1,4 @@
 {
-  "buildCommand": "npm run generate --prefix ui",
-  "installCommand": "npm ci --prefix ui",
   "headers": [
     {
       "source": "/(.*)",
@@ -11,3 +9,4 @@
     }
   ]
 }
+ 
