@@ -33,7 +33,7 @@ export const usePropertyNFT = () => {
     try {
       const o1js = await import('o1js');
       const { Field, MerkleMap } = o1js;
-      const { PropertyNFT } = await import('~/../contracts/src/PropertyNFT');
+      const { PropertyNFT } = await import('@contracts/PropertyNFT');
       const { Mina, PublicKey } = o1js;
 
       // Configure network
@@ -116,7 +116,7 @@ export const usePropertyNFT = () => {
     try {
       const o1js = await import('o1js');
       const { Field, Poseidon, Mina, PublicKey } = o1js;
-      const { PropertyNFT } = await import('~/../contracts/src/PropertyNFT');
+      const { PropertyNFT } = await import('@contracts/PropertyNFT');
 
       if (!address.value) throw new Error('Wallet not connected');
 
