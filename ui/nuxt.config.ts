@@ -13,7 +13,10 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: false,
 
-  // NOTE: No nitro.preset — we want plain static output to .output/public
+  // Force static preset so output is .output/public even on Vercel
+  nitro: {
+    preset: 'static',
+  },
 
   app: {
     head: {
